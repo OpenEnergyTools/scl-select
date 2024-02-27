@@ -48,7 +48,7 @@ This element was meant to be used only for plugins in this organization. If it s
 | `isNull`      | private | `boolean`             | `false` |             |                |
 | `parkedValue` | private | `string \| null`      | `null`  |             |                |
 | `null`        | private | `boolean`             |         |             |                |
-| `textField`   | private | `Select \| undefined` |         |             |                |
+| `selectInput` | private | `Select \| undefined` |         |             |                |
 
 #### Methods
 
