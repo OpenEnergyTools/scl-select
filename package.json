@@ -2,7 +2,7 @@
   "name": "@openenergytools/scl-select",
   "description": "select for SCL related enumerations",
   "license": "Apache-2.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "dist/scl-select.js",
   "module": "dist/scl-select.js",

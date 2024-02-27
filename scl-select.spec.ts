@@ -21,16 +21,15 @@ describe('Custom SCL related select', () => {
       let event: SinonSpy;
 
       beforeEach(async () => {
+        event = spy();
         sclTextField = await fixture(
           html`<scl-select
             nullable
             .value="${'Option1'}"
             .selectOptions=${['Option1', 'Option2']}
+            @input="${(evt: Event) => event(evt)}"
           ></scl-select>`
         );
-
-        event = spy();
-        window.addEventListener('input', event);
       });
 
       it('triggers input event with clicked nullSwitch', async () => {
@@ -66,20 +65,19 @@ describe('Custom SCL related select', () => {
       let event: SinonSpy;
 
       beforeEach(async () => {
+        event = spy();
         sclTextField = await fixture(
           html`<scl-select
             nullable
             .value=${null}
             .selectOptions=${['Option1', 'Option2']}
+            @input="${(evt: Event) => event(evt)}"
           ></scl-select>`
         );
-
-        event = spy();
-        window.addEventListener('input', event);
       });
 
       it('triggers input event with clicked nullSwitch', async () => {
-        sclTextField.nullSwitch?.click();
+        await sendMouse({ type: 'click', position: [770, 20] });
 
         expect(event).to.have.been.calledOnce;
       });
@@ -87,7 +85,7 @@ describe('Custom SCL related select', () => {
       it('return non null value with clicked nullSwitch', async () => {
         expect(sclTextField.value).to.be.null;
 
-        sclTextField.nullSwitch?.click();
+        await sendMouse({ type: 'click', position: [770, 20] });
         await sclTextField.updateComplete;
 
         expect(sclTextField.value).to.equal('');
@@ -126,12 +124,14 @@ describe('Custom SCL related select', () => {
       expect(sclTextField.checkValidity()).to.be.true);
 
     it('triggers input event when value changes', async () => {
+      expect(sclTextField.value).to.equal('Option1');
       await sendMouse({ type: 'click', position: [30, 10] }); // focus input
       await timeout(200);
 
       await sendMouse({ type: 'click', position: [30, 130] }); // focus input
 
       expect(event).to.have.been.calledOnce;
+      expect(event.args[0][0].target.value).to.equal('Option2');
     });
   });
 
