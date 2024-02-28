@@ -27,7 +27,7 @@ describe('Custom SCL related TextField', () => {
         html`<scl-select
           label="label"
           required
-          value="Option1"
+          .value=${'Option1'}
           .selectOptions=${['Option1', 'Option2']}
           supportingText="supportingText"
         ></scl-select>`
@@ -50,6 +50,15 @@ describe('Custom SCL related TextField', () => {
       await timeout(200);
       await visualDiff(sclSelect, `non-nullable/disabled`);
     });
+
+    it('updates on new value set', async () => {
+      await timeout(200);
+
+      sclSelect.value = 'Option2';
+      await timeout(200);
+
+      await visualDiff(sclSelect, `non-nullable/updates value`);
+    });
   });
 
   describe('that is nullable', () => {
@@ -60,7 +69,7 @@ describe('Custom SCL related TextField', () => {
         html`<scl-select
           nullable
           label="label"
-          value="Option1"
+          .value=${'Option1'}
           .selectOptions=${['Option1', 'Option2']}
         ></scl-select>`
       );
