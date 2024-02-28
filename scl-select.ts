@@ -14,20 +14,21 @@ export class SclSelect extends LitElement {
   @property({ type: Boolean })
   nullable = false;
 
+  @state()
   private selectValue: string = '';
 
   /** SCL attributes `value`, can only be `null` if [[`nullable`]]. */
-  @property({ type: String })
-  get value(): string | null {
-    return this.null ? null : this.selectValue;
-  }
-
+  @property({ attribute: false })
   set value(value: string | null) {
     if (value === null) this.null = true;
     else {
       this.null = false;
       this.selectValue = value;
     }
+  }
+
+  get value(): string | null {
+    return this.null ? null : this.selectValue;
   }
 
   /** Value array be be renders as selection option inside the selection input */
