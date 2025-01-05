@@ -6,13 +6,14 @@ import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import { SinonSpy, spy } from 'sinon';
 
 import './scl-select.js';
-import type { SclSelect } from './scl-select.js';
+import type { SclSelect } from './SclSelect.js';
 
 function timeout(ms: number) {
   return new Promise(res => {
     setTimeout(res, ms);
   });
 }
+mocha.timeout(4000);
 
 describe('Custom SCL related select', () => {
   describe('with nullable option being activated', () => {

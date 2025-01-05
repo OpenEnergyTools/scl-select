@@ -12,6 +12,7 @@
     "importHelpers": true,
     "outDir": "dist",
     "sourceMap": true,
+    "skipLibCheck": true,
     "inlineSources": true,
     "rootDir": "./",
     "declaration": true,

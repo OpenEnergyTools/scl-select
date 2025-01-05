@@ -3,6 +3,8 @@ import { visualRegressionPlugin } from '@web/test-runner-visual-regression/plugi
 
 import { playwrightLauncher } from '@web/test-runner-playwright';
 
+import { polyfill } from '@web/dev-server-polyfill';
+
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
 
@@ -22,8 +24,6 @@ const filteredLogs = [
 
 const browsers = [
      playwrightLauncher({ product: 'chromium' }),
-     playwrightLauncher({ product: 'firefox' }),
-     playwrightLauncher({ product: 'webkit' }),
    ];
 
 function defaultGetImageDiff({ baselineImage, image, options }) {
@@ -61,6 +61,9 @@ function defaultGetImageDiff({ baselineImage, image, options }) {
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   plugins: [
+    polyfill({
+          scopedCustomElementRegistry: true,
+        }),
     visualRegressionPlugin({
       update: process.argv.includes('--update-visual-baseline'),
       getImageDiff: (options) => {

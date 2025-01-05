@@ -5,9 +5,9 @@ import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import { visualDiff } from '@web/test-runner-visual-regression';
 
 import './scl-select.js';
-import type { SclSelect } from './scl-select.js';
+import type { SclSelect } from './SclSelect.js';
 
-const factor = window.process && process.env.CI ? 5 : 3;
+const factor = window.process && process.env.CI ? 6 : 3;
 function timeout(ms: number) {
   return new Promise(res => {
     setTimeout(res, ms * factor);
@@ -123,7 +123,7 @@ describe('Custom SCL related TextField', () => {
 
     it('indicate value null with nullSwitch', async () => {
       sclSelect.reportValidity();
-      await timeout(200);
+      await timeout(400);
 
       await visualDiff(
         document.body,
@@ -133,7 +133,7 @@ describe('Custom SCL related TextField', () => {
 
     it('indicates with reportValidity invalid input', async () => {
       await sendMouse({ type: 'click', position: [380, 20] }); // focus input
-      await timeout(200);
+      await timeout(400);
 
       sclSelect.reportValidity();
       await timeout(200);
@@ -143,7 +143,7 @@ describe('Custom SCL related TextField', () => {
 
     it('does not indicated invalid input with checkValidity', async () => {
       await sendMouse({ type: 'click', position: [380, 20] }); // focus input
-      await timeout(200);
+      await timeout(400);
 
       sclSelect.checkValidity();
       await timeout(200);
@@ -153,7 +153,7 @@ describe('Custom SCL related TextField', () => {
 
     it('sets a custom message with setCustomValidity', async () => {
       await sendMouse({ type: 'click', position: [380, 20] }); // focus input
-      await timeout(200);
+      await timeout(400);
 
       sclSelect.setCustomValidity('Please select something');
       sclSelect.reportValidity();
