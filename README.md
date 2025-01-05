@@ -7,15 +7,31 @@ This is a web component meant to be used for SCL type attributes restricted to x
 This element was meant to be used only for plugins in this organization. If it still fills you bill please use or re-use it. But be aware that we will not react on feature wishes that do not contribute to the needs of plugin in this organization.
 
 
-## `scl-select.ts`:
+## `SclSelect.ts`:
 
-### class: `SclSelect`
+### class: `SclSelect`, `scl-select`
 
 #### Superclass
 
 | Name         | Module | Package |
 | ------------ | ------ | ------- |
 | `LitElement` |        | lit     |
+
+#### Mixins
+
+| Name                  | Module | Package                                 |
+| --------------------- | ------ | --------------------------------------- |
+| `ScopedElementsMixin` |        | @open-wc/scoped-elements/lit-element.js |
+
+#### Static Fields
+
+| Name             | Privacy | Type     | Default                                                                                                            | Description | Inherited From |
+| ---------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------ | ----------- | -------------- |
+| `scopedElements` |         | `object` | `{
+    'md-switch': MdSwitch,
+    'md-filled-select': MdFilledSelect,
+    'md-select-option': MdSelectOption,
+  }` |             |                |
 
 #### Fields
 
@@ -69,9 +85,17 @@ This element was meant to be used only for plugins in this organization. If it s
 
 ### Exports
 
-| Kind | Name        | Declaration | Module        | Package |
-| ---- | ----------- | ----------- | ------------- | ------- |
-| `js` | `SclSelect` | SclSelect   | scl-select.ts |         |
+| Kind | Name        | Declaration | Module       | Package |
+| ---- | ----------- | ----------- | ------------ | ------- |
+| `js` | `SclSelect` | SclSelect   | SclSelect.ts |         |
+
+## `scl-select.ts`:
+
+### Exports
+
+| Kind                        | Name         | Declaration | Module        | Package |
+| --------------------------- | ------------ | ----------- | ------------- | ------- |
+| `custom-element-definition` | `scl-select` | SclSelect   | /SclSelect.js |         |
 
 
 &copy; 2023 The Contributors
